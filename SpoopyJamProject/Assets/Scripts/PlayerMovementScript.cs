@@ -7,6 +7,7 @@ public class PlayerMovementScript : MonoBehaviour
     public Rigidbody2D rb;
 	public Vector2 sidewaysForce;
     public GameObject[] ground;
+    public float speed;
 
 	void start()
 	{
@@ -30,12 +31,12 @@ public class PlayerMovementScript : MonoBehaviour
 
         if (Input.GetKey("d"))
 		{
-			rb.velocity = new Vector2(2, GetComponent<Rigidbody2D>().velocity.y);
+			rb.velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
 		}
 
 		if (Input.GetKey("a"))
 		{
-			rb.velocity = new Vector2(-2, GetComponent<Rigidbody2D>().velocity.y);
+			rb.velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
 		}
     }
 }

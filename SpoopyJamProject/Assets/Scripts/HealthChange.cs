@@ -27,6 +27,14 @@ public class HealthChange : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy"); //Might cause problems refilling array later
+        if (GetComponent<BoxCollider2D>().IsTouching(GameObject.FindWithTag("Killbox").GetComponent<BoxCollider2D>()))
+        {
+            HP = 0;
+            hearts[0].GetComponent<Image>().sprite = sprite2;
+            hearts[1].GetComponent<Image>().sprite = sprite2;
+            hearts[2].GetComponent<Image>().sprite = sprite2;
+        }
+
         for (int i = 0; i < enemies.Length; i++)
         {
             if (GetComponent<BoxCollider2D>().IsTouching(enemies[i].GetComponent<BoxCollider2D>()))
