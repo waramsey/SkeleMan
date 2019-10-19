@@ -9,6 +9,7 @@ public class HealthChange : MonoBehaviour
     public Sprite sprite1;
     public Sprite sprite2;
     public GameObject[] hearts;
+    public GameObject[] enemies;
 
 
     // Start is called before the first frame update
@@ -25,7 +26,14 @@ public class HealthChange : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        HP--;
-        hearts[HP].GetComponent<Image>().sprite = sprite2;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy"); //Might cause problems refilling array later
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if (GetComponent<BoxCollider2D>().IsTouching(enemies[i].GetComponent<BoxCollider2D>()))
+            {
+                HP--;
+                hearts[HP].GetComponent<Image>().sprite = sprite2;
+            }
+        }
     }
 }
