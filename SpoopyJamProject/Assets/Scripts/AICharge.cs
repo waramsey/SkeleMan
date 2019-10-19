@@ -6,6 +6,7 @@ public class AICharge : MonoBehaviour
 {
     public float speed;
     private Transform target;
+    public float sightRadius;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,9 @@ public class AICharge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        if (Mathf.Abs(target.position.x - transform.position.x) < sightRadius)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        }
     }
 }

@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 344161948}
   - component: {fileID: 344161947}
   m_Layer: 0
-  m_Name: KillBox
+  m_Name: Killbox
   m_TagString: Killbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2.07, y: 2.07}
   m_EdgeRadius: 0
 --- !u!212 &344161948
 SpriteRenderer:

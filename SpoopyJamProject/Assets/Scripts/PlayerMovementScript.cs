@@ -8,9 +8,12 @@ public class PlayerMovementScript : MonoBehaviour
 	public Vector2 sidewaysForce;
     public GameObject[] ground;
     public float speed;
+    public float jumpHeight;
 
 	void start()
 	{
+        speed = 3;
+        jumpHeight = 8;
 		rb = GetComponent<Rigidbody2D>();
     }
 	
@@ -24,7 +27,7 @@ public class PlayerMovementScript : MonoBehaviour
             {
                 if (GetComponent<BoxCollider2D>().IsTouching(ground[i].GetComponent<BoxCollider2D>()))
                 {
-                    rb.velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 5);
+                    rb.velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
                 }
             }
         }
