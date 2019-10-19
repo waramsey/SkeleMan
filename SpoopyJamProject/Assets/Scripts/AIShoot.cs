@@ -6,7 +6,7 @@ public class AIShoot : MonoBehaviour
 {
     public float speed;
     private Transform target;
-    private Transform firePoint;
+    public Transform firePoint;
     public GameObject arrow;
     public float fireRate = 1f;
     private float lastShot = 0.0f;
@@ -17,6 +17,7 @@ public class AIShoot : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        arrow.GetComponent<Transform>().transform.Rotate(0, 0, 315);
     }
 
     // Update is called once per frame
@@ -33,18 +34,12 @@ public class AIShoot : MonoBehaviour
     }
 
 
-
-
-
-
-
-
-
     void Shoot()
     {
         if (Time.time > fireRate + lastShot)
         {
             Instantiate(arrow, firePoint.position, firePoint.rotation);
+            arrow.GetComponent<Transform>().transform.Rotate(0, 0, 315);
             lastShot = Time.time;
         }
     }
