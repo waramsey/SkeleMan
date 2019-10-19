@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthChange : MonoBehaviour
 {
@@ -14,17 +15,17 @@ public class HealthChange : MonoBehaviour
     void Start()
     {
         HP = 3;
+
         for (int i = 0; i < 3; i++)
         {
-            hearts[i] = GameObject.Find("/BoneHeart1");
-            hearts[i].GetComponent<SpriteRenderer>().sprite = sprite1;
+            hearts[i].GetComponent<Image>().sprite = sprite1;
         }
     }
 
-    // Update is called once per frame
+
     void OnCollisionEnter2D(Collision2D col)
     {
         HP--;
-        hearts[HP].GetComponent<SpriteRenderer>().sprite = sprite2;
+        hearts[HP].GetComponent<Image>().sprite = sprite2;
     }
 }
