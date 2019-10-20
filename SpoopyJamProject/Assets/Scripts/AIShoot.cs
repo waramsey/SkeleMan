@@ -7,7 +7,8 @@ public class AIShoot : MonoBehaviour
     public float speed;
     private Transform target;
     public Transform firePoint;
-    public GameObject arrow;
+    public GameObject arrowLeft;
+    public GameObject arrowRight;
     public float fireRate = 1f;
     private float lastShot = 0.0f;
     public float sightRadius;
@@ -18,7 +19,6 @@ public class AIShoot : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        arrow.GetComponent<Transform>().transform.Rotate(0, 0, 315);
 
         animator.SetBool("Spotted", false);
         animator.SetBool("TooClose", false);
@@ -27,10 +27,6 @@ public class AIShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
-
-
         if (Mathf.Abs(target.position.x - transform.position.x) < tooClose)
         {
             animator.SetBool("TooClose", true);
@@ -71,9 +67,23 @@ public class AIShoot : MonoBehaviour
     {
         if (Time.time > fireRate + lastShot)
         {
-            Instantiate(arrow, firePoint.position, firePoint.rotation);
-            arrow.GetComponent<Transform>().transform.Rotate(0, 0, 315);
-            lastShot = Time.time;
+            if (!GetComponent<SpriteRenderer>().flipX)
+            {
+                //firePoint.transform.position = new Vector3(-1.3f, 0, 0);
+                //firePoint.position.Set(-1.3f, 0, 0); //change firepoint
+
+                Instantiate(arrowLeft, firePoint.position, firePoint.rotation);
+                arrowLeft.GetComponent<Transform>().transform.Rotate(0, 0, 315);
+                lastShot = Time.time;
+                
+            } else
+            {
+                //firePoint.transform.position = new Vector3(1.3f, 0, 0);
+
+                Instantiate(arrowRight, firePoint.position, firePoint.rotation);
+                arrowRight.GetComponent<Transform>().transform.Rotate(0, 0, 315);
+                lastShot = Time.time;
+            }
         }
     }
 }
