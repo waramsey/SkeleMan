@@ -10,6 +10,7 @@ public class FlashingText : MonoBehaviour
     public float toggleCount;
     public bool toggled;
     public Text text;
+    public int counter = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,7 @@ public class FlashingText : MonoBehaviour
             toggled = !toggled;
         }
 
-        if (Input.anyKey)
+        if (Input.anyKey && Time.timeSinceLevelLoad > counter)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }

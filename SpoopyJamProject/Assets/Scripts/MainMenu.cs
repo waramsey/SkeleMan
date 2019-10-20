@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public int counter = 3;
+    
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.anyKey)
+        if (Input.anyKey && Time.timeSinceLevelLoad > counter)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 4);
         }
     }
 }
