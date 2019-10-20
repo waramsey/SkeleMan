@@ -59,6 +59,11 @@ public class HealthChange : MonoBehaviour
         }
         */
 
+        if (GetComponent<BoxCollider2D>().IsTouching(GameObject.FindWithTag("coffin").GetComponent<BoxCollider2D>()))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        }
+
         if (HP <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

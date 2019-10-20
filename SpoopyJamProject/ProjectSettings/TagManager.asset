@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Killbox
   - projectile
+  - coffin
   layers:
   - Default
   - TransparentFX
