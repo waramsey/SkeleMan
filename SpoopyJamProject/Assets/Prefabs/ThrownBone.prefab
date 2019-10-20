@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1259668247687104969}
   - component: {fileID: 1259668247687104970}
   - component: {fileID: -5476774029549849052}
+  - component: {fileID: 5000412002855308771}
   m_Layer: 0
   m_Name: ThrownBone
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1259668247687104971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.018, y: 0.788, z: -0.38686723}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -134,3 +135,22 @@ MonoBehaviour:
   speed: 7
   rb: {fileID: 1259668247687104969}
   enemies: []
+--- !u!95 &5000412002855308771
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259668247687104971}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c6c55a69ab80744691c650ec712a359, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
