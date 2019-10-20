@@ -26,9 +26,25 @@ public class AIShoot : MonoBehaviour
         if (Mathf.Abs(target.position.x - transform.position.x) < tooClose)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, -(speed * Time.deltaTime));
+            if (target.position.x - transform.position.x > 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
         }
-        if (Mathf.Abs(target.position.x - transform.position.x) < sightRadius && Mathf.Abs(target.position.y - transform.position.y) < 10)
+        else if (Mathf.Abs(target.position.x - transform.position.x) < sightRadius && Mathf.Abs(target.position.y - transform.position.y) < 10)
         {
+            if (target.position.x - transform.position.x > 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
             Shoot();
         }
     }
