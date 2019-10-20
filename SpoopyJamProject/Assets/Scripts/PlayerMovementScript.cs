@@ -28,11 +28,13 @@ public class PlayerMovementScript : MonoBehaviour
         if (Input.GetKey("s"))
         {
             animator.SetBool("Crouch", true);
+            Crouch = true;
         }
 
         else
         {
             animator.SetBool("Crouch", false);
+            Crouch = false;
             if (Input.GetKey("space"))
             {
                 ground = GameObject.FindGameObjectsWithTag("ground"); //Might cause problems refilling array later
