@@ -34,4 +34,12 @@ public class ThrownBone : MonoBehaviour
 
 
     }
+
+    // disappear after a few seconds
+    /*
+    void Update()
+    {
+        if
+    }
+    */
 }
