@@ -7,6 +7,7 @@ public class ThrownBone : MonoBehaviour
     public float speed = 20f;
     public Rigidbody2D rb;
     public GameObject[] enemies;
+    public int damage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -16,19 +17,21 @@ public class ThrownBone : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        Debug.Log(hitInfo.name);
-
-        /*
-        Enemy enemy = hitInfo.GetComponent<Enemy>();
-        if (enemy != null)
+        //Instantiate(impactEffect, transform.position, transform.rotation);
+        if (hitInfo.tag == "Enemy")
         {
-            enemy.TakeDamage(damage);
+            GameObject enemy = hitInfo.gameObject;
+
+            Destroy(enemy);
         }
 
-        Instantiate(impactEffect, transform.position, transform.rotation);
-        */
-        Destroy(gameObject);
+        if (hitInfo.name != "BoneBoi")
+        {
+            Destroy(gameObject);
+        }
+
+
     }
 }

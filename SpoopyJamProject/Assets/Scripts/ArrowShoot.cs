@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArrowShoot : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 10f;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -13,9 +13,11 @@ public class ArrowShoot : MonoBehaviour
         rb.velocity = transform.right * -speed;
     }
 
+
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Debug.Log(hitInfo.name);
+        //Debug.Log(hitInfo.name);
+
         Destroy(gameObject);
     }
 }
