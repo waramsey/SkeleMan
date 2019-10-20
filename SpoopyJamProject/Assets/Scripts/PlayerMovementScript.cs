@@ -9,11 +9,13 @@ public class PlayerMovementScript : MonoBehaviour
     public GameObject[] ground;
     public float speed;
     public float jumpHeight;
+    public bool Crouch;
 
 	void start()
 	{
         speed = 3;
         jumpHeight = 8;
+        Crouch = false;
 		rb = GetComponent<Rigidbody2D>();
 
     }
@@ -23,26 +25,37 @@ public class PlayerMovementScript : MonoBehaviour
     {
         animator.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
 
-        if (Input.GetKey("space"))
+        if (Input.GetKey("s"))
         {
-            ground = GameObject.FindGameObjectsWithTag("ground"); //Might cause problems refilling array later
-            for (int i = 0; i < ground.Length; i++)
-            {
-                if (GetComponent<BoxCollider2D>().IsTouching(ground[i].GetComponent<BoxCollider2D>()))
-                {
-                    rb.velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
-                }
-            }
+            animator.SetBool("Crouch", true);
         }
 
-        if (Input.GetKey("d"))
-		{
-			rb.velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
-		}
+        else
+        {
+            animator.SetBool("Crouch", false);
+            if (Input.GetKey("space"))
+            {
+                ground = GameObject.FindGameObjectsWithTag("ground"); //Might cause problems refilling array later
+                for (int i = 0; i < ground.Length; i++)
+                {
+                    if (GetComponent<BoxCollider2D>().IsTouching(ground[i].GetComponent<BoxCollider2D>()))
+                    {
+                        rb.velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
+                    }
+                }
+            }
 
-		if (Input.GetKey("a"))
-		{
-			rb.velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
-		}
+            if (Input.GetKey("d"))
+            {
+                rb.velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+
+            if (Input.GetKey("a"))
+            {
+                rb.velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+        }
     }
 }

@@ -17,6 +17,13 @@ public class AICharge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target.position.x - transform.position.x > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        } else
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
         if (Mathf.Abs(target.position.x - transform.position.x) < sightRadius)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
