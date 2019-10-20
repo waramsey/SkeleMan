@@ -11,6 +11,7 @@ public class FlashingText : MonoBehaviour
     public bool toggled;
     public Text text;
     public int counter = 3;
+    public int afk = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,11 @@ public class FlashingText : MonoBehaviour
         if (Input.anyKey && Time.timeSinceLevelLoad > counter)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+
+        if (Time.timeSinceLevelLoad > afk)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
         }
     }
 }
